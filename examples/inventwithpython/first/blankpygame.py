@@ -19,11 +19,10 @@ from kivgame.locals import *
 pygame = pg.init()
 
 DISPLAYSURF = pygame.display.set_mode((400, 300))
-pygame.display.set_caption('Hello Pygame World!')
+pygame.display.set_caption('Hello Pygame World!', 'icon.png')
 
 def loop():
     for event in pygame.event.get():
-        print(event)
         if event.type == QUIT:
             pygame.quit()
 

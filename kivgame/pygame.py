@@ -35,6 +35,7 @@ def init():
 
     app.display = app.pygame.display
     app.display.window = app.pygame.window
+    app.display.app = app
 
     app.image = app.pygame.image
     app.image.window = app.pygame.window

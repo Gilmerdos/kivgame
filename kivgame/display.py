@@ -1,5 +1,6 @@
 from kivy.core.window import Window
 from kivy.graphics import Rectangle
+from kivy.base import EventLoop
 
 class Dummy(object):
     pass
@@ -9,6 +10,7 @@ class Display(object):
         self.width = -1
         self.height = -1
         self.window = None
+        self.app = None
 
     def get_width(self):
         return self.width
@@ -28,9 +30,9 @@ class Display(object):
         return canvas
 
     def set_caption(self, title, icontitle=None):
-        Window.set_title(title)
+        self.app.title = title
         if icontitle != None:
-            Window.set_icon(icontitle)
+            self.app.icon = icontitle
 
     def blit(self, source, dest, area=None, special_flags=0):
         try:
