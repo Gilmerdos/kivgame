@@ -6,15 +6,8 @@ class DummyEvent(object):
         self.char =  event[1]
         self.ascii = event[0]
 
-    def __repr__(self):
         if self.char == "escape":
             self.type = QUIT
-
-        return str({
-            "type" : self.type,
-            "char" : self.char,
-            "ascii" : self.ascii
-        })
 
 
 class Event(object):
