@@ -40,6 +40,7 @@ def init():
     app.event = app.pygame.event
 
     app.display = app.pygame.display
+    app.display.window = app.pygame.window
     app.display.app = app
 
     app.image = app.pygame.image
@@ -49,7 +50,7 @@ def init():
     return app
 
 def wrapper_loop(*args):
-    pygame.window.canvas.clear()
+    #pygame.window.canvas.clear()
     pygame.loop()
 
 def set_loop(loop):

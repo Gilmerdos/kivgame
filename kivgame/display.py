@@ -1,6 +1,7 @@
 
 from kivy.core.window import Window
 from kivy.graphics import Rectangle
+from kivy.graphics import Color
 from kivy.base import EventLoop
 from .locals import *
 
@@ -54,6 +55,7 @@ class Display(object):
         self.height = float(self.height)
         canvas = Dummy()
         canvas.blit = self.blit
+        canvas.fill = self.fill
         canvas.get_width = self.get_width
         canvas.get_height = self.get_height
         return canvas
@@ -62,6 +64,14 @@ class Display(object):
         self.app.title = title
         if icontitle != None:
             self.app.icon = icontitle
+
+    def fill(self, color, rect=None, special_flags=0):
+        R = color[0] / 255.0
+        G = color[1] / 255.0
+        B = color[2] / 255.0
+        with self.window.canvas:
+            Color(R, G, B)
+            Rectangle(size=(Window.width, Window.height))
 
     def blit(self, source, dest, area=None, special_flags=0):
         try:
