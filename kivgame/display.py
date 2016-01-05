@@ -27,6 +27,11 @@ class Display(object):
         canvas.get_height = self.get_height
         return canvas
 
+    def set_caption(self, title, icontitle=None):
+        Window.set_title(title)
+        if icontitle != None:
+            Window.set_icon(icontitle)
+
     def blit(self, source, dest, area=None, special_flags=0):
         try:
             dest = (dest[0], self.height - dest[1] - source.height)

@@ -1,4 +1,7 @@
-from examples.tutorial.class_ball import main as class_ball_main
+from examples.tutorial.simple_ball import main as main_simple_ball
+from examples.tutorial.class_ball import main as main_class_ball
+from examples.inventwithpython.first.blankpygame import main as main_blankpygame
+
 
 def main():
     """
@@ -12,7 +15,7 @@ def main():
        - change directory to root folder
        - ..\kivy-2.7.bat main.py
     """
-    class_ball_main()
+    main_blankpygame()
 
 if __name__ == "__main__":
     main()

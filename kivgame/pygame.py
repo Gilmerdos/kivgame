@@ -5,6 +5,20 @@ from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from .core import Pygame
 
+class Canvas(FloatLayout):
+    def __init__(self, **kwargs):
+        super(Canvas, self).__init__(**kwargs)
+        self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+        self._keyboard.bind(on_key_down=self._on_keyboard_down)
+
+    def _keyboard_closed(self):
+        self._keyboard.unbind(on_key_down=self._on_keyboard_down)
+        self._keyboard = None
+
+    def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
+        self.pygame.event.add_event(keycode)
+        return True
+
 class KivGameApp(App):
     def build(self):
         Clock.schedule_interval(self.pygame.wrapper_loop, 0.032)
@@ -13,7 +27,11 @@ class KivGameApp(App):
 def init():
     app = KivGameApp()
     app.pygame = pygame
-    app.pygame.window = FloatLayout()
+    app.pygame.window = Canvas()
+    app.pygame.window.pygame = app.pygame
+
+    app.quit = app.pygame.quit
+    app.event = app.pygame.event
 
     app.display = app.pygame.display
     app.display.window = app.pygame.window
