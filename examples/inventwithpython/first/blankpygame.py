@@ -1,4 +1,5 @@
 """
+# SCROLL DOWN FOR KIVGAME EXAMPLE
 # ORIGINAL BY INVENTWITHPYTHON: CHAPTER 2
 # http://inventwithpython.com/pygame/chapters/
 import pygame, sys
@@ -18,7 +19,7 @@ from kivgame.pygame import pygame as pg
 from kivgame.locals import *
 pygame = pg.init()
 
-DISPLAYSURF = pygame.display.set_mode((400, 300))
+DISPLAYSURF = pygame.display.set_mode((1024, 768))
 pygame.display.set_caption('Hello Pygame World!', 'icon.png')
 
 def loop():

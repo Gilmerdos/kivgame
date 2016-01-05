@@ -1,6 +1,8 @@
+
 from kivy.core.window import Window
 from kivy.graphics import Rectangle
 from kivy.base import EventLoop
+from .locals import *
 
 class Dummy(object):
     pass
@@ -11,6 +13,8 @@ class Display(object):
         self.height = -1
         self.window = None
         self.app = None
+        self.size = (640, 480)
+        self.resizable = False
 
     def get_width(self):
         return self.width
@@ -18,8 +22,33 @@ class Display(object):
     def get_height(self):
         return self.height
 
-    def set_mode(self, size=(640,480)):
+    def set_mode(self, size=(640,480), flags=0, depth=0):
+        if OPENGL <= flags:
+            flags -= OPENGL
+
+        if NOFRAME <= flags:
+            flags -= NOFRAME
+            Window.borderless = "1"
+
+        if RESIZABLE <= flags:
+            flags -= RESIZABLE
+            self.resizable = True
+
+        if HWSURFACE <= flags:
+            flags -= HWSURFACE
+
+        if DOUBLEBUF <= flags:
+            flags -= DOUBLEBUF
+
+        if FULLSCREEN <= flags:
+            flags -= FULLSCREEN
+            Window.fullscreen = True
+
+
+
+
         Window.size = size
+        self.size = size
         self.width, self.height = size
         self.width = float(self.width)
         self.height = float(self.height)
@@ -47,4 +76,7 @@ class Display(object):
             Rectangle(texture=source.texture, pos=dest, size=size)
 
     def flip(self):
+        return None
+
+    def update(self):
         return None
