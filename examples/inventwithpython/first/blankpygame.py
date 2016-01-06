@@ -19,7 +19,7 @@ from kivgame.pygame import pygame as pg
 from kivgame.locals import *
 pygame = pg.init()
 
-DISPLAYSURF = pygame.display.set_mode((1024, 768))
+DISPLAYSURF = pygame.display.set_mode((480, 360))
 pygame.display.set_caption('Hello Pygame World!', 'icon.png')
 
 def loop():

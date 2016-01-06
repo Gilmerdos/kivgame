@@ -46,6 +46,12 @@ def init():
     app.image = app.pygame.image
     app.image.window = app.pygame.window
 
+    app.draw = app.pygame.draw
+    app.draw.window = app.pygame.window
+
+    app.PixelArray = app.pygame.PixelArray
+    app.PixelArray.window = app.pygame.window
+
     app.set_loop = app.pygame.set_loop
     return app
 

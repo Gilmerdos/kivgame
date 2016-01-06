@@ -5,8 +5,10 @@ from kivy.graphics import Color
 from kivy.base import EventLoop
 from .locals import *
 
-class Dummy(object):
-    pass
+class DummyDisplay(object):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
 
 class Display(object):
     def __init__(self, window=None):
@@ -53,7 +55,7 @@ class Display(object):
         self.width, self.height = size
         self.width = float(self.width)
         self.height = float(self.height)
-        canvas = Dummy()
+        canvas = DummyDisplay(self.width, self.height)
         canvas.blit = self.blit
         canvas.fill = self.fill
         canvas.get_width = self.get_width
