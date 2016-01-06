@@ -59,7 +59,7 @@ FPS = 30 # frames per second setting
 fpsClock = pygame.time.Clock()
 
 # set up the window
-DISPLAYSURF = pygame.display.set_mode((400, 300), 0, 32)
+DISPLAYSURF = pygame.display.set_mode((400, 300), RESIZABLE, 32)
 pygame.display.set_caption('Animation')
 
 WHITE = (255, 255, 255)

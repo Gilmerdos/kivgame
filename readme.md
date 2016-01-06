@@ -43,8 +43,8 @@ if __name__ == "__main__":
 
 #Some examples so far
 
-##catanimation.py
-![Alt text](examples/inventwithpython/first/showcase/catanimation.gif?raw=true "catanimation.py")
+##catanimation.py (resizable version)
+![Alt text](examples/inventwithpython/first/showcase/catanimation_resizable.gif?raw=true "catanimation.py")
 
 ##drawing.py
 ![Alt text](examples/inventwithpython/first/showcase/drawing.png?raw=true "drawing.py")
