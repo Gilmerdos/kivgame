@@ -4,7 +4,7 @@ pygame = pg.init()
 size = width, height = 800, 480
 speed = [10, 5]
 screen = pygame.display.set_mode(size)
-ball = pygame.image.load("ball.bmp")
+ball = pygame.image.load("img/ball.bmp")
 ballrect = ball.get_rect()
 
 def loop():

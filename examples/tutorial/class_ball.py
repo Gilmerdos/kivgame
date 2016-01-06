@@ -6,7 +6,7 @@ class Game(object):
         self.size = self.width, self.height = 800, 480
         self.speed = [10, 5]
         self.screen = pygame.display.set_mode(self.size)
-        self.ball = pygame.image.load("ball.bmp")
+        self.ball = pygame.image.load("img/ball.bmp")
         self.ballrect = self.ball.get_rect()
 
     def loop(self):

@@ -1,6 +1,6 @@
 import kivy
 from kivy.app import App
-from kivy.clock import Clock
+from kivy.clock import Clock as KivyClock
 from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from .core import Pygame
@@ -27,7 +27,9 @@ class Canvas(FloatLayout):
 
 class KivGameApp(App):
     def build(self):
-        Clock.schedule_interval(self.pygame.wrapper_loop, 0.032)
+        self.clock = self.pygame.time.Clock()
+        self.clock_fps = 0.03125
+        self.clock_interval = KivyClock.schedule_interval(self.pygame.wrapper_loop, self.clock_fps)
         return self.pygame.window
 
 def init():
@@ -49,6 +51,10 @@ def init():
     app.draw = app.pygame.draw
     app.draw.window = app.pygame.window
 
+    app.time = app.pygame.time
+    app.time.Clock.app = app
+    app.time.window = app.pygame.window
+
     app.PixelArray = app.pygame.PixelArray
     app.PixelArray.window = app.pygame.window
 
@@ -62,6 +68,7 @@ def wrapper_loop(*args):
 def set_loop(loop):
     pygame.loop = loop
     pygame.wrapper_loop = wrapper_loop
+    pygame
 
 pygame = Pygame()
 pygame.set_loop = set_loop

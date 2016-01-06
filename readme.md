@@ -43,8 +43,11 @@ if __name__ == "__main__":
 
 #Some examples so far
 
-##blankpygame.py
-![Alt text](examples/inventwithpython/first/showcase/blankpygame.png?raw=true "blankpygame.py")
+##catanimation.py
+![Alt text](examples/inventwithpython/first/showcase/catanimation.gif?raw=true "catanimation.py")
 
 ##drawing.py
 ![Alt text](examples/inventwithpython/first/showcase/drawing.png?raw=true "drawing.py")
+
+##blankpygame.py
+![Alt text](examples/inventwithpython/first/showcase/blankpygame.png?raw=true "blankpygame.py")

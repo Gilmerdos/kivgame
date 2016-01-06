@@ -6,3 +6,6 @@
 
 ##drawing.py
 ![Alt text](showcase/drawing.png?raw=true "drawing.py")
+
+##catanimation.py
+![Alt text](showcase/catanimation.gif?raw=true "catanimation.py")
