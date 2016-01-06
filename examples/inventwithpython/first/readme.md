@@ -9,3 +9,8 @@
 
 ##catanimation.py
 ![Alt text](showcase/catanimation.gif?raw=true "catanimation.py")
+
+##memorygame.py
+
+Currently not working, animation would work if coded differently i guess
+![Alt text](showcase/memorygame.gif?raw=true "memorygame.py")

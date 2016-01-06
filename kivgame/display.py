@@ -47,9 +47,6 @@ class Display(object):
             flags -= FULLSCREEN
             Window.fullscreen = True
 
-
-
-
         Window.size = size
         self.size = size
         self.width, self.height = size
@@ -71,6 +68,7 @@ class Display(object):
         R = color[0] / 255.0
         G = color[1] / 255.0
         B = color[2] / 255.0
+        self.window.canvas.clear() #to avoid memory leaks
         with self.window.canvas:
             Color(R, G, B)
             Rectangle(size=(Window.width, Window.height))

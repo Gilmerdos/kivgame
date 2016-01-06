@@ -3,7 +3,8 @@ from .display import Display
 from .image import Image
 from .event import Event
 from .draw import Draw
-from .time import Time
+from .kivtime import Time
+from .rect import Rect
 from .pixelarray import PixelArray
 
 class Pygame(object):
@@ -13,6 +14,7 @@ class Pygame(object):
         self.event = Event()
         self.draw = Draw()
         self.time = Time()
+        self.Rect = Rect
         self.PixelArray = PixelArray
 
     def quit(self):

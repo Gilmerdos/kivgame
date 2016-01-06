@@ -2,7 +2,8 @@
 #from examples.tutorial.class_ball import main as main_class_ball
 #from examples.inventwithpython.first.blankpygame import main as main_blankpygame
 #from examples.inventwithpython.first.drawing import main as main_drawing
-from examples.inventwithpython.first.catanimation import main as main_catanimation
+#from examples.inventwithpython.first.catanimation import main as main_catanimation
+from examples.inventwithpython.first.memorypuzzle import main as main_memorypuzzle
 
 
 def main():
@@ -17,7 +18,7 @@ def main():
        - change directory to root folder
        - ..\kivy-2.7.bat main.py
     """
-    main_catanimation()
+    main_memorypuzzle()
 
 if __name__ == "__main__":
     main()

@@ -4,6 +4,7 @@ from kivy.clock import Clock as KivyClock
 from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from .core import Pygame
+from .locals import *
 
 class Canvas(FloatLayout):
     """ http://stackoverflow.com/a/17296090 """
@@ -12,6 +13,21 @@ class Canvas(FloatLayout):
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
         self._keyboard.bind(on_key_down=self._on_keyboard_down)
         Window.bind(on_resize=self.resize)
+
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            self.pygame.event.add_mouse_event(touch, MOUSEBUTTONDOWN)
+            return True
+
+    def on_touch_move(self, touch):
+        if self.collide_point(*touch.pos):
+            self.pygame.event.add_mouse_event(touch, MOUSEMOTION)
+            return True
+
+    def on_touch_up(self, touch):
+        if self.collide_point(*touch.pos):
+            self.pygame.event.add_mouse_event(touch, MOUSEBUTTONUP)
+            return True
 
     def _keyboard_closed(self):
         self._keyboard.unbind(on_key_down=self._on_keyboard_down)
@@ -54,6 +70,9 @@ def init():
     app.time = app.pygame.time
     app.time.Clock.app = app
     app.time.window = app.pygame.window
+
+    app.Rect = app.pygame.Rect
+    app.Rect.window = app.pygame.window
 
     app.PixelArray = app.pygame.PixelArray
     app.PixelArray.window = app.pygame.window

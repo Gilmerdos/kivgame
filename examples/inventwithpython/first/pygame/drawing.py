@@ -1,12 +1,9 @@
-"""
-ORIGINAL BY INVENTWITHPYTHON: CHAPTER 2
-http://inventwithpython.com/pygame/chapters/
-"""
+import pygame, sys
+from pygame.locals import *
 
-from kivgame.pygame import pygame as pg
-from kivgame.locals import *
-pygame = pg.init()
+pygame.init()
 
+# set up the window
 DISPLAYSURF = pygame.display.set_mode((400, 300), 0, 32)
 pygame.display.set_caption('Drawing')
 
@@ -28,23 +25,17 @@ pygame.draw.ellipse(DISPLAYSURF, RED, (300, 200, 40, 80), 1)
 pygame.draw.rect(DISPLAYSURF, RED, (200, 150, 100, 50))
 
 pixObj = pygame.PixelArray(DISPLAYSURF)
-pixObj[380, 280] = BLACK
-pixObj[382, 282] = BLACK
-pixObj[384, 284] = BLACK
-pixObj[386, 286] = BLACK
-pixObj[388, 288] = BLACK
+pixObj[380][280] = BLACK
+pixObj[382][282] = BLACK
+pixObj[384][284] = BLACK
+pixObj[386][286] = BLACK
+pixObj[388][288] = BLACK
 del pixObj
 
 # run the game loop
-def loop():
+while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
+            sys.exit()
     pygame.display.update()
-
-def main():
-    pygame.set_loop(loop)
-    pygame.run()
-
-if __name__ == "__main__":
-    main()
