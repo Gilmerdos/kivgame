@@ -8,7 +8,7 @@ class DummyEvent(object):
         self.char = event[0]
         self.key =  event[1]
 
-        if self.char == "escape":
+        if self.key == "escape":
             self.type = QUIT
 
 class DummyMouseEvent(object):

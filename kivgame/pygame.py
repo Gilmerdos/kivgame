@@ -5,13 +5,18 @@ from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from .core import Pygame
 from .locals import *
+try:
+    import android
+except:
+    android = False
 
 class Canvas(FloatLayout):
     """ http://stackoverflow.com/a/17296090 """
     def __init__(self, **kwargs):
         super(Canvas, self).__init__(**kwargs)
-        self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
-        self._keyboard.bind(on_key_down=self._on_keyboard_down)
+        if not android:
+            self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+            self._keyboard.bind(on_key_down=self._on_keyboard_down)
         Window.bind(on_resize=self.resize)
 
     def on_touch_down(self, touch):
@@ -38,8 +43,9 @@ class Canvas(FloatLayout):
         return True
 
     def resize(self, *args):
-        if not self.pygame.display.resizable and Window.size != self.pygame.display.size:
-            Window.size = self.pygame.display.size
+        if not android:
+            if not self.pygame.display.resizable and Window.size != self.pygame.display.size:
+                Window.size = self.pygame.display.size
 
 class KivGameApp(App):
     def build(self):

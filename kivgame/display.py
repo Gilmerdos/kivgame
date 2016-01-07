@@ -5,6 +5,11 @@ from kivy.graphics import Color
 from kivy.base import EventLoop
 from .locals import *
 
+try:
+    import android
+except:
+    android = False
+
 class DummyDisplay(object):
     def __init__(self, width, height):
         self.width = width
@@ -47,14 +52,15 @@ class Display(object):
             flags -= FULLSCREEN
             Window.fullscreen = True
 
-        Window.size = size
         self.size = size
         self.width, self.height = size
+        if not android: Window.size = size
         self.width = float(self.width)
         self.height = float(self.height)
         canvas = DummyDisplay(self.width, self.height)
         canvas.blit = self.blit
         canvas.fill = self.fill
+        canvas.clear = self.clear
         canvas.get_width = self.get_width
         canvas.get_height = self.get_height
         return canvas
@@ -63,6 +69,9 @@ class Display(object):
         self.app.title = title
         if icontitle != None:
             self.app.icon = icontitle
+
+    def clear(self):
+        self.window.canvas.clear() #to avoid memory leaks
 
     def fill(self, color, rect=None, special_flags=0):
         R = color[0] / 255.0
@@ -73,7 +82,7 @@ class Display(object):
             Color(R, G, B)
             Rectangle(size=(Window.width, Window.height))
 
-    def blit(self, source, dest, area=None, special_flags=0):
+    def blit(self, source, dest=(0, 0), area=None, special_flags=0):
         try:
             dest = (dest[0], self.height - dest[1] - source.height)
         except:
